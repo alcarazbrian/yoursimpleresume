@@ -1,23 +1,43 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 
 interface Props {
 	title: string;
 	description?: string;
 }
 
-const { title, description = "Free ATS Friendly Resume Builder. Create a professional, machine-readable CV in minutes. No sign-up required." } = Astro.props;
+const {
+	title,
+	description = "Free ATS Friendly Resume Builder. Create a professional, machine-readable CV in minutes. No sign-up required.",
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
+		<!-- Google tag (gtag.js) -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-92V3WGWXM8"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+
+			gtag("config", "G-92V3WGWXM8");
+		</script>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="keywords" content="resume builder, cv maker, ats friendly, free resume builder, no sign up, pdf resume" />
+		<meta
+			name="keywords"
+			content="resume builder, cv maker, ats friendly, free resume builder, no sign up, pdf resume"
+		/>
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
