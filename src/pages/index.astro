@@ -1,0 +1,383 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import CVForm from "../components/CVForm.astro";
+import CVPreview from "../components/CVPreview.astro";
+---
+
+<Layout title="Resume ATS Builder">
+	<main class="flex flex-col md:flex-row h-screen w-full">
+		<div
+			class="w-full md:w-1/3 flex flex-col h-full border-r border-gray-200 bg-white print:hidden"
+		>
+			<Header />
+			<CVForm />
+		</div>
+
+		<CVPreview />
+	</main>
+</Layout>
+
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		// --- 1. CONFIGURACIÓN DE TRADUCCIONES ---
+		const translations = {
+			en: {
+				resumeDetails: "Resume Details",
+				fillInfo:
+					"Fill in your information to generate your ATS-friendly resume.",
+				printSettings: "⚠️ Select 'Margins: None' in print settings.",
+				personalInfo: "Personal Information",
+				fullName: "Full Name",
+				jobTitle: "Job Title",
+				email: "Email",
+				phone: "Phone",
+				location: "Location",
+				linkedin: "LinkedIn URL",
+				portfolio: "Portfolio/Website",
+				profSummary: "Professional Summary",
+				experience: "Experience",
+				position: "Position",
+				companyName: "Company Name",
+				dateRange: "Date Range",
+				description: "Description",
+				education: "Education",
+				school: "School",
+				institution: "Institution",
+				degree: "Degree/Certificate",
+				dateStatus: "Date/Status",
+				skillsLang: "Skills & Languages",
+				techSkills: "Technical Skills",
+				commaSep: "Separate with commas",
+				languages: "Languages",
+				resetForm: "Reset Form / Borrar Todo",
+				supportText:
+					"Did it help? Help me keep improving the project 🚀",
+
+				// Preview Headers
+				prevProfile: "Professional Profile",
+				prevExp: "Work Experience",
+				prevEdu: "Education",
+				prevSkills: "Skills",
+				prevLang: "Languages",
+			},
+			es: {
+				resumeDetails: "Detalles del CV",
+				fillInfo:
+					"Completa tu información para generar tu CV optimizado para ATS.",
+				printSettings: "⚠️ Selecciona 'Márgenes: Ninguno' al guardar.",
+				personalInfo: "Información Personal",
+				fullName: "Nombre Completo",
+				jobTitle: "Puesto / Título",
+				email: "Correo Electrónico",
+				phone: "Teléfono",
+				location: "Ubicación",
+				linkedin: "URL de LinkedIn",
+				portfolio: "Portafolio / Sitio Web",
+				profSummary: "Perfil Profesional",
+				experience: "Experiencia",
+				position: "Posición",
+				companyName: "Nombre de la Empresa",
+				dateRange: "Fechas",
+				description: "Descripción",
+				education: "Educación",
+				school: "Escuela",
+				institution: "Institución",
+				degree: "Título / Certificado",
+				dateStatus: "Fecha / Estado",
+				skillsLang: "Habilidades e Idiomas",
+				techSkills: "Habilidades Técnicas",
+				commaSep: "Separar con comas",
+				languages: "Idiomas",
+				resetForm: "Reset Form / Borrar Todo",
+				supportText:
+					"¿Te sirvió? Ayúdame a seguir mejorando el proyecto 🚀",
+
+				// Preview Headers
+				prevProfile: "Perfil Profesional",
+				prevExp: "Experiencia Laboral",
+				prevEdu: "Educación",
+				prevSkills: "Habilidades",
+				prevLang: "Idiomas",
+			},
+		};
+
+		type TranslationKey = keyof typeof translations.en;
+		let currentLang: "en" | "es" = "en";
+
+		function updateLanguage() {
+			const t = translations[currentLang];
+
+			// A. Actualizar textos del FORMULARIO
+			const elements = document.querySelectorAll("[data-i18n]");
+			elements.forEach((element) => {
+				const el = element as HTMLElement;
+				const key = el.getAttribute("data-i18n") as TranslationKey;
+				if (key && t[key]) {
+					el.innerText = t[key];
+				}
+			});
+
+			// B. Actualizar headers de la PREVIEW
+			const prevSummary = document.querySelector(
+				"#sec-summary h3",
+			) as HTMLElement;
+			const prevExp = document.querySelector(
+				"#sec-experience h3",
+			) as HTMLElement;
+			const prevEdu = document.querySelector(
+				"#sec-education h3",
+			) as HTMLElement;
+			const prevSkills = document.querySelector(
+				"#sec-skills h3",
+			) as HTMLElement;
+			const prevLang = document.querySelector(
+				"#sec-languages h3",
+			) as HTMLElement;
+
+			if (prevSummary) prevSummary.innerText = t.prevProfile;
+			if (prevExp) prevExp.innerText = t.prevExp;
+			if (prevEdu) prevEdu.innerText = t.prevEdu;
+			if (prevSkills) prevSkills.innerText = t.prevSkills;
+			if (prevLang) prevLang.innerText = t.prevLang;
+		}
+
+		// Listener del Botón de Idioma
+		const langBtn = document.getElementById("lang-toggle");
+		if (langBtn) {
+			langBtn.addEventListener("click", () => {
+				currentLang = currentLang === "en" ? "es" : "en";
+				updateLanguage();
+			});
+		}
+
+		// --- 2. LÓGICA DE REACTIVIDAD (VISIBILIDAD) ---
+		const inputs = document.querySelectorAll(
+			"input[data-target], textarea[data-target]",
+		) as NodeListOf<HTMLInputElement | HTMLTextAreaElement>;
+
+		function updateVisibility(targetKey: string, value: string) {
+			// A. Direct Binding
+			const outputId = `out-${targetKey}`;
+			const outputElement = document.getElementById(outputId);
+			const containerElement = document.getElementById(
+				`${outputId}-container`,
+			);
+
+			if (outputElement) {
+				const hasValue = value.trim() !== "";
+				outputElement.innerText = value;
+				outputElement.classList.toggle("hidden", !hasValue);
+				if (containerElement) {
+					containerElement.classList.toggle("hidden", !hasValue);
+				}
+			}
+
+			// B. Header Visibility Logic
+			const headerSection = document.getElementById("sec-header");
+			if (headerSection) {
+				const name = document.getElementById("out-full-name");
+				const title = document.getElementById("out-job-title");
+				const email = document.getElementById("out-email-container");
+				const phone = document.getElementById("out-phone-container");
+				const loc = document.getElementById("out-location-container");
+				const link = document.getElementById("out-linkedin-container");
+				const port = document.getElementById("out-portfolio-container");
+
+				const isAnyHeaderVisible =
+					(name && !name.classList.contains("hidden")) ||
+					(title && !title.classList.contains("hidden")) ||
+					(email && !email.classList.contains("hidden")) ||
+					(phone && !phone.classList.contains("hidden")) ||
+					(loc && !loc.classList.contains("hidden")) ||
+					(link && !link.classList.contains("hidden")) ||
+					(port && !port.classList.contains("hidden"));
+
+				headerSection.classList.toggle("hidden", !isAnyHeaderVisible);
+			}
+
+			// C. Summary
+			const summarySection = document.getElementById("sec-summary");
+			const summaryOut = document.getElementById("out-summary");
+			if (summarySection && summaryOut) {
+				summarySection.classList.toggle(
+					"hidden",
+					summaryOut.classList.contains("hidden"),
+				);
+			}
+
+			// D. Experience
+			if (targetKey.startsWith("exp-")) {
+				const index = targetKey.split("-")[1];
+				const roleInput = document.querySelector(
+					`input[data-target="exp-${index}-role"]`,
+				) as HTMLInputElement;
+				const slotContainer = document.getElementById(
+					`out-exp-${index}-container`,
+				);
+
+				if (slotContainer && roleInput) {
+					slotContainer.classList.toggle(
+						"hidden",
+						roleInput.value.trim() === "",
+					);
+				}
+
+				const expSection = document.getElementById("sec-experience");
+				if (expSection) {
+					const anyVisible = [1, 2, 3].some((i) => {
+						const el = document.getElementById(
+							`out-exp-${i}-container`,
+						);
+						return el && !el.classList.contains("hidden");
+					});
+					expSection.classList.toggle("hidden", !anyVisible);
+				}
+			}
+
+			// E. Education
+			if (targetKey.startsWith("edu-")) {
+				const index = targetKey.split("-")[1];
+				const schoolInput = document.querySelector(
+					`input[data-target="edu-${index}-school"]`,
+				) as HTMLInputElement;
+				const slotContainer = document.getElementById(
+					`out-edu-${index}-container`,
+				);
+
+				if (slotContainer && schoolInput) {
+					slotContainer.classList.toggle(
+						"hidden",
+						schoolInput.value.trim() === "",
+					);
+				}
+
+				const eduSection = document.getElementById("sec-education");
+				if (eduSection) {
+					const anyVisible = [1, 2, 3].some((i) => {
+						const el = document.getElementById(
+							`out-edu-${i}-container`,
+						);
+						return el && !el.classList.contains("hidden");
+					});
+					eduSection.classList.toggle("hidden", !anyVisible);
+				}
+			}
+
+			// F. Skills & Languages
+			if (targetKey === "skills") {
+				const section = document.getElementById("sec-skills");
+				const out = document.getElementById("out-skills");
+				if (section && out)
+					section.classList.toggle(
+						"hidden",
+						out.classList.contains("hidden"),
+					);
+			}
+			if (targetKey === "languages") {
+				const section = document.getElementById("sec-languages");
+				const out = document.getElementById("out-languages");
+				if (section && out)
+					section.classList.toggle(
+						"hidden",
+						out.classList.contains("hidden"),
+					);
+			}
+		}
+
+		// --- 3. AUTO-GUARDADO (LOCALSTORAGE) ---
+		// Cargar datos
+		const savedData = localStorage.getItem("cvData");
+		if (savedData) {
+			const parsedData = JSON.parse(savedData);
+			Object.keys(parsedData).forEach((key) => {
+				const input = document.querySelector(
+					`[data-target="${key}"]`,
+				) as HTMLInputElement | HTMLTextAreaElement;
+				if (input) {
+					input.value = parsedData[key];
+					updateVisibility(key, input.value); // Actualizar visualmente al cargar
+				}
+			});
+		}
+
+		// Guardar datos al escribir
+		inputs.forEach((input) => {
+			input.addEventListener("input", () => {
+				const target = input.dataset.target;
+				const value = input.value;
+				if (target) {
+					updateVisibility(target, value);
+					// Guardar en LS
+					const currentData = JSON.parse(
+						localStorage.getItem("cvData") || "{}",
+					);
+					currentData[target] = value;
+					localStorage.setItem("cvData", JSON.stringify(currentData));
+				}
+			});
+		});
+
+		// Reset Button
+		document.getElementById("reset-btn")?.addEventListener("click", () => {
+			if (confirm("Are you sure? This will delete all your data.")) {
+				localStorage.removeItem("cvData");
+				location.reload();
+			}
+		});
+
+		// --- 4. EXTRAS UI (Contador & Donaciones) ---
+
+		// Contador Summary
+		const summaryInput = document.querySelector(
+			'textarea[data-target="summary"]',
+		) as HTMLTextAreaElement;
+		const counter = document.getElementById("summary-counter");
+		if (summaryInput && counter) {
+			summaryInput.addEventListener("input", () => {
+				counter.innerText = `${summaryInput.value.length}/450`;
+			});
+			// Inicializar contador si ya hay texto cargado
+			counter.innerText = `${summaryInput.value.length}/450`;
+		}
+
+		// --- LÓGICA DE DONACIONES Y POPUP ---
+		const btnMp = document.getElementById("btn-mp");
+		const popup = document.getElementById("mp-popup");
+		const closeBtn = document.getElementById("close-popup");
+		const alias = "levelastro";
+
+		function showPopup() {
+			if (popup) {
+				popup.classList.remove("translate-y-[-150%]", "opacity-0");
+				setTimeout(() => {
+					hidePopup();
+				}, 8000);
+			}
+		}
+
+		function hidePopup() {
+			if (popup) {
+				popup.classList.add("translate-y-[-150%]", "opacity-0");
+			}
+		}
+
+		if (btnMp) {
+			btnMp.addEventListener("click", () => {
+				navigator.clipboard
+					.writeText(alias)
+					.then(() => {
+						showPopup();
+					})
+					.catch((err) => {
+						console.error("Error al copiar: ", err);
+						alert("Alias: " + alias);
+					});
+			});
+		}
+
+		if (closeBtn) {
+			closeBtn.addEventListener("click", hidePopup);
+		}
+	});
+</script>

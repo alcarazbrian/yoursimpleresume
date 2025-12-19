@@ -1,0 +1,658 @@
+---
+
+---
+
+<section
+    class="h-[calc(100vh-64px)] overflow-y-auto w-full p-6 md:p-8 bg-white print:hidden"
+    id="cv-form"
+>
+    <div class="max-w-2xl mx-auto space-y-8 pb-12">
+        <div class="space-y-2">
+            <h2
+                class="text-2xl font-bold text-gray-900"
+                data-i18n="resumeDetails"
+            >
+                Resume Details
+            </h2>
+            <p class="text-gray-500 text-sm" data-i18n="fillInfo">
+                Fill in your information to generate your ATS-friendly resume.
+            </p>
+            <p
+                class="text-[11px] text-amber-600 font-medium text-center mt-2 bg-amber-50 py-1 px-2 rounded border border-amber-100"
+                data-i18n="printSettings"
+            >
+                ⚠️ Select 'Margins: None' in print settings.
+            </p>
+        </div>
+
+        <details
+            class="group bg-white border border-gray-200 rounded-xl open:ring-2 open:ring-indigo-600/10 open:border-indigo-600 transition-all"
+            open
+        >
+            <summary
+                class="flex items-center justify-between p-4 cursor-pointer list-none font-medium text-gray-900 group-open:text-indigo-600 transition-colors"
+            >
+                <span class="flex items-center gap-3">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+                        ></path><circle cx="12" cy="7" r="4"></circle></svg
+                    >
+                    <span data-i18n="personalInfo">Personal Information</span>
+                </span>
+                <span class="transition group-open:rotate-180">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><polyline points="6 9 12 15 18 9"></polyline></svg
+                    >
+                </span>
+            </summary>
+
+            <div class="p-4 pt-0 grid grid-cols-1 gap-4">
+                <div>
+                    <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        data-i18n="fullName">Full Name</label
+                    >
+                    <input
+                        type="text"
+                        data-target="full-name"
+                        placeholder="John Doe"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all"
+                    />
+                </div>
+                <div>
+                    <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        data-i18n="jobTitle">Job Title</label
+                    >
+                    <input
+                        type="text"
+                        data-target="job-title"
+                        placeholder="Senior Frontend Developer"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all"
+                    />
+                </div>
+                <div>
+                    <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        data-i18n="email">Email</label
+                    >
+                    <input
+                        type="email"
+                        data-target="email"
+                        placeholder="john@example.com"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all"
+                    />
+                </div>
+                <div>
+                    <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        data-i18n="phone">Phone</label
+                    >
+                    <input
+                        type="tel"
+                        data-target="phone"
+                        placeholder="+1 234 567 890"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all"
+                    />
+                </div>
+                <div>
+                    <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        data-i18n="location">Location</label
+                    >
+                    <input
+                        type="text"
+                        data-target="location"
+                        placeholder="New York, NY"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all"
+                    />
+                </div>
+                <div>
+                    <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        data-i18n="linkedin">LinkedIn URL</label
+                    >
+                    <input
+                        type="url"
+                        data-target="linkedin"
+                        placeholder="linkedin.com/in/johndoe"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all"
+                    />
+                </div>
+                <div class="col-span-1">
+                    <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        data-i18n="portfolio">Portfolio/Website</label
+                    >
+                    <input
+                        type="url"
+                        data-target="portfolio"
+                        placeholder="johndoe.com"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all"
+                    />
+                </div>
+            </div>
+        </details>
+
+        <details
+            class="group bg-white border border-gray-200 rounded-xl open:ring-2 open:ring-indigo-600/10 open:border-indigo-600 transition-all"
+        >
+            <summary
+                class="flex items-center justify-between p-4 cursor-pointer list-none font-medium text-gray-900 group-open:text-indigo-600 transition-colors"
+            >
+                <span class="flex items-center gap-3">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><line x1="8" y1="6" x2="21" y2="6"></line><line
+                            x1="8"
+                            y1="12"
+                            x2="21"
+                            y2="12"></line><line x1="8" y1="18" x2="21" y2="18"
+                        ></line><line x1="3" y1="6" x2="3.01" y2="6"
+                        ></line><line x1="3" y1="12" x2="3.01" y2="12"
+                        ></line><line x1="3" y1="18" x2="3.01" y2="18"
+                        ></line></svg
+                    >
+                    <span data-i18n="profSummary">Professional Summary</span>
+                </span>
+                <span class="transition group-open:rotate-180">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><polyline points="6 9 12 15 18 9"></polyline></svg
+                    >
+                </span>
+            </summary>
+            <div class="p-4 pt-0">
+                <div class="relative">
+                    <textarea
+                        data-target="summary"
+                        maxlength="450"
+                        rows="5"
+                        placeholder="Passionate developer..."
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all resize-none"
+                    ></textarea>
+                    <div
+                        class="text-xs text-gray-400 text-right mt-1"
+                        id="summary-counter"
+                    >
+                        0/450
+                    </div>
+                </div>
+            </div>
+        </details>
+
+        <details
+            class="group bg-white border border-gray-200 rounded-xl open:ring-2 open:ring-indigo-600/10 open:border-indigo-600 transition-all"
+        >
+            <summary
+                class="flex items-center justify-between p-4 cursor-pointer list-none font-medium text-gray-900 group-open:text-indigo-600 transition-colors"
+            >
+                <span class="flex items-center gap-3">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><rect x="2" y="7" width="20" height="14" rx="2" ry="2"
+                        ></rect><path
+                            d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"
+                        ></path></svg
+                    >
+                    <span data-i18n="experience">Experience</span>
+                </span>
+                <span class="transition group-open:rotate-180">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><polyline points="6 9 12 15 18 9"></polyline></svg
+                    >
+                </span>
+            </summary>
+            <div class="p-4 pt-0 space-y-6">
+                {
+                    [1, 2, 3].map((i) => (
+                        <div class="border-b border-gray-100 pb-6 last:border-0 last:pb-0">
+                            <h4 class="text-sm font-semibold text-gray-500 mb-3 uppercase tracking-wider">
+                                <span data-i18n="position">Position</span> {i}
+                            </h4>
+                            <div class="grid grid-cols-1 gap-4">
+                                <div class="relative">
+                                    <label
+                                        class="block text-sm font-medium text-gray-700 mb-1"
+                                        data-i18n="companyName"
+                                    >
+                                        Company Name
+                                    </label>
+                                    <input
+                                        type="text"
+                                        data-target={`exp-${i}-company`}
+                                        placeholder="Acme Corp"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        class="block text-sm font-medium text-gray-700 mb-1"
+                                        data-i18n="jobTitle"
+                                    >
+                                        Job Title
+                                    </label>
+                                    <input
+                                        type="text"
+                                        data-target={`exp-${i}-role`}
+                                        placeholder="Product Designer"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        class="block text-sm font-medium text-gray-700 mb-1"
+                                        data-i18n="dateRange"
+                                    >
+                                        Date Range
+                                    </label>
+                                    <input
+                                        type="text"
+                                        data-target={`exp-${i}-date`}
+                                        placeholder="Jan 2020 - Present"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        class="block text-sm font-medium text-gray-700 mb-1"
+                                        data-i18n="description"
+                                    >
+                                        Description
+                                    </label>
+                                    <textarea
+                                        data-target={`exp-${i}-desc`}
+                                        rows="3"
+                                        placeholder="Key responsibilities..."
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all resize-none"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </details>
+
+        <details
+            class="group bg-white border border-gray-200 rounded-xl open:ring-2 open:ring-indigo-600/10 open:border-indigo-600 transition-all"
+        >
+            <summary
+                class="flex items-center justify-between p-4 cursor-pointer list-none font-medium text-gray-900 group-open:text-indigo-600 transition-colors"
+            >
+                <span class="flex items-center gap-3">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path
+                            d="M6 12v5c3 3 9 3 12 0v-5"></path></svg
+                    >
+                    <span data-i18n="education">Education</span>
+                </span>
+                <span class="transition group-open:rotate-180">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><polyline points="6 9 12 15 18 9"></polyline></svg
+                    >
+                </span>
+            </summary>
+            <div class="p-4 pt-0 space-y-6">
+                {
+                    [1, 2, 3].map((i) => (
+                        <div class="border-b border-gray-100 pb-6 last:border-0 last:pb-0">
+                            <h4 class="text-sm font-semibold text-gray-500 mb-3 uppercase tracking-wider">
+                                <span data-i18n="school">School</span> {i}
+                            </h4>
+                            <div class="grid grid-cols-1 gap-4">
+                                <div>
+                                    <label
+                                        class="block text-sm font-medium text-gray-700 mb-1"
+                                        data-i18n="institution"
+                                    >
+                                        Institution
+                                    </label>
+                                    <input
+                                        type="text"
+                                        data-target={`edu-${i}-school`}
+                                        placeholder="University of Technology"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        class="block text-sm font-medium text-gray-700 mb-1"
+                                        data-i18n="degree"
+                                    >
+                                        Degree/Certificate
+                                    </label>
+                                    <input
+                                        type="text"
+                                        data-target={`edu-${i}-degree`}
+                                        placeholder="B.Sc. Computer Science"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        class="block text-sm font-medium text-gray-700 mb-1"
+                                        data-i18n="dateStatus"
+                                    >
+                                        Date/Status
+                                    </label>
+                                    <input
+                                        type="text"
+                                        data-target={`edu-${i}-date`}
+                                        placeholder="Graduated 2019"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </details>
+
+        <details
+            class="group bg-white border border-gray-200 rounded-xl open:ring-2 open:ring-indigo-600/10 open:border-indigo-600 transition-all"
+        >
+            <summary
+                class="flex items-center justify-between p-4 cursor-pointer list-none font-medium text-gray-900 group-open:text-indigo-600 transition-colors"
+            >
+                <span class="flex items-center gap-3">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><path
+                            d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+                        ></path></svg
+                    >
+                    <span data-i18n="skillsLang">Skills & Languages</span>
+                </span>
+                <span class="transition group-open:rotate-180">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><polyline points="6 9 12 15 18 9"></polyline></svg
+                    >
+                </span>
+            </summary>
+            <div class="p-4 pt-0 space-y-4">
+                <div>
+                    <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        data-i18n="techSkills">Technical Skills</label
+                    >
+                    <textarea
+                        data-target="skills"
+                        rows="3"
+                        placeholder="JavaScript, React, Node.js..."
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all resize-none"
+                    ></textarea>
+                    <p class="text-xs text-gray-500 mt-1" data-i18n="commaSep">
+                        Separate with commas
+                    </p>
+                </div>
+                <div>
+                    <label
+                        class="block text-sm font-medium text-gray-700 mb-1"
+                        data-i18n="languages">Languages</label
+                    >
+                    <textarea
+                        data-target="languages"
+                        rows="2"
+                        placeholder="English (Native)..."
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-transparent outline-none transition-all resize-none"
+                    ></textarea>
+                </div>
+            </div>
+        </details>
+        <button
+            id="reset-btn"
+            class="text-xs text-red-500 hover:text-red-700 underline mt-2"
+            data-i18n="resetForm"
+        >
+            Reset Form / Borrar Todo
+        </button>
+
+        <div class="mt-8 flex flex-col items-center gap-6">
+            <button
+                id="lang-toggle"
+                class="flex items-center gap-2 px-4 py-2 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 rounded-full text-sm font-medium transition-colors"
+            >
+                <span class="text-lg">🌐</span>
+                <div id="lang-label" class="flex items-center gap-2">
+                    <span>English</span>
+                    <svg
+                        class="w-4 h-4 text-gray-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                        ><path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
+                        ></path></svg
+                    >
+                    <span>Español</span>
+                </div>
+            </button>
+
+            <div
+                class="mt-8 border border-gray-200 rounded-xl p-8 bg-gray-50/50"
+            >
+                <p
+                    class="text-xs text-gray-500 mb-3 font-medium text-center"
+                    data-i18n="supportText"
+                >
+                    Did it help? Help me keep improving the project 🚀
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    <a
+                        href="https://paypal.me/levelastro"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="flex items-center justify-center gap-2 px-4 py-2 bg-[#0070BA] hover:bg-[#003087] text-white text-xs font-bold rounded-lg transition-colors shadow-sm"
+                    >
+                        PayPal 🌍
+                    </a>
+
+                    <button
+                        id="btn-mp"
+                        class="flex items-center justify-center gap-2 px-4 py-2 bg-[#009EE3] hover:bg-[#007eb5] text-white text-xs font-bold rounded-lg transition-all shadow-sm active:scale-95"
+                    >
+                        Mercado Pago
+                        <svg
+                            class="w-5 h-3.5 rounded-[1px] shadow-sm"
+                            viewBox="0 0 9 6"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <rect fill="#75AADB" width="9" height="6"></rect>
+                            <rect fill="#ffffff" y="2" width="9" height="2"
+                            ></rect>
+                            <circle fill="#F6B40E" cx="4.5" cy="3" r="0.8"
+                            ></circle>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div
+                id="mp-popup"
+                class="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[95%] sm:w-fit sm:max-w-md bg-white border-l-4 border-[#009EE3] shadow-2xl rounded-r-lg p-4 transform transition-all duration-300 translate-y-[-150%] opacity-0"
+            >
+                <div class="flex items-start gap-3">
+                    <div class="text-[#009EE3] mt-1">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                            ></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-800 text-sm">
+                            ¡Alias copiado al portapapeles! 📋
+                        </h3>
+                        <p class="text-xs text-gray-600 mt-1 leading-relaxed">
+                            El alias <strong
+                                class="text-gray-900 bg-gray-100 px-1 rounded"
+                                >levelastro</strong
+                            > ya está listo.
+                            <br />
+                            Pégalo en <strong class="text-gray-800"
+                                >Mercado Pago o tu Home Banking</strong
+                            >.
+                            <br />
+                            <span class="inline-flex items-center gap-1 mt-0.5">
+                                (Solo Argentina
+                                <svg
+                                    class="w-5 h-3.5 inline-block rounded-[1px] shadow-sm"
+                                    viewBox="0 0 9 6"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <rect fill="#75AADB" width="9" height="6"
+                                    ></rect>
+                                    <rect
+                                        fill="#ffffff"
+                                        y="2"
+                                        width="9"
+                                        height="2"></rect>
+                                    <circle
+                                        fill="#F6B40E"
+                                        cx="4.5"
+                                        cy="3"
+                                        r="0.8"></circle>
+                                </svg>)
+                            </span>
+                            ¡Muchas gracias! 🙌
+                        </p>
+                    </div>
+                    <button
+                        id="close-popup"
+                        class="text-gray-400 hover:text-gray-600"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4 w-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="pt-6 border-t border-gray-100 w-full text-center">
+                <p class="text-xm text-gray-400 font-medium">
+                    Designed by
+                    <a
+                        href="https://alcarazbrian.netlify.app"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-indigo-600 hover:text-indigo-800 font-semibold hover:underline decoration-2 underline-offset-2 transition-all ml-0.5"
+                    >
+                        Brian Alcaraz (Open to Work)
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

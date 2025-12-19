@@ -1,0 +1,29 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Free ATS Friendly Resume Builder. Create a professional, machine-readable CV in minutes. No sign-up required." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="keywords" content="resume builder, cv maker, ats friendly, free resume builder, no sign up, pdf resume" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<title>{title}</title>
+	</head>
+	<body class="bg-gray-50 text-gray-900 antialiased overflow-hidden h-screen">
+		<slot />
+	</body>
+</html>
