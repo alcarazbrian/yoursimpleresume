@@ -55,19 +55,7 @@
 
 <script>
     const btn = document.getElementById("download-btn");
-
     btn?.addEventListener("click", () => {
-        // 1. PRIMERO: Enviamos el aviso a Google Analytics
-        // Verificamos si Google Analytics cargó correctamente para evitar errores
-        if (typeof gtag === "function") {
-            gtag("event", "generate_pdf", {
-                event_category: "Engagement",
-                event_label: "Header Download Button",
-            });
-            console.log("Evento de descarga enviado a Google Analytics");
-        }
-
-        // 2. DESPUÉS: Abrimos la ventana de imprimir
         window.print();
     });
 </script>
